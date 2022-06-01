@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">JualBukuID</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="nama_sampah_result_activity">Nama Sampah</string>
+
+    <string name="titleCamera">Ambil Foto</string>
+    <string name="titleResult">Hasil Perhitungan</string>
+    <string name="titleHistory">Riwayat Penjualan</string>
+    <string name="foto_sampah">Foto Sampah</string>
+    <string name="nama_sampah_camera_activity">Nama Sampah</string>
+    <string name="berat_sampah_camera_activity">Berat Sampah</string>
+    <string name="upload">Upload</string>
+
 </resources>

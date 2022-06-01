@@ -6,4 +6,133 @@
     android:layout_height="match_parent"
     tools:context=".ui.CameraActivity">
 
+    <TextView
+        android:id="@+id/tv_titleActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titleCamera"
+        android:layout_marginTop="56dp"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/im_result_photo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_titleActivity"
+        app:layout_constraintStart_toStartOf="@+id/tv_titleActivity"
+        app:layout_constraintTop_toBottomOf="@+id/tv_titleActivity"
+        app:srcCompat="@drawable/ic_baseline_photo_24" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/foto_sampah"
+        app:layout_constraintEnd_toEndOf="@+id/im_result_photo"
+        app:layout_constraintStart_toStartOf="@+id/im_result_photo"
+        app:layout_constraintTop_toBottomOf="@+id/im_result_photo" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nama_sampah_camera_activity"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/et_nama_sampah"
+        android:background="@drawable/background_white_rounded"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:textColor="@color/black"
+        android:paddingHorizontal="16dp"
+        android:maxLines="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/berat_sampah_camera_activity"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_nama_sampah" />
+
+    <EditText
+        android:id="@+id/et_berat_sampah"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textColor="@color/black"
+        android:paddingHorizontal="16dp"
+        android:background="@drawable/background_white_rounded"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kg"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@id/et_berat_sampah"
+        app:layout_constraintTop_toTopOf="@id/et_berat_sampah"
+        app:layout_constraintBottom_toBottomOf="@id/et_berat_sampah"/>
+
+    <Button
+        android:id="@+id/btn_take_photo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/titleCamera"
+        android:background="@drawable/background_button_green"
+        android:textColor="@color/green_text"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_upload"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_berat_sampah" />
+
+    <Button
+        android:id="@+id/btn_upload"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="40dp"
+        android:text="@string/upload"
+        android:background="@drawable/background_button_green"
+        android:textColor="@color/green_text"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_take_photo"
+        app:layout_constraintTop_toBottomOf="@+id/et_berat_sampah" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
