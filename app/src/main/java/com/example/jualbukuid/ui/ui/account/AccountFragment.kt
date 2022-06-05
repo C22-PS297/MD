@@ -40,4 +40,6 @@ class AccountFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }
