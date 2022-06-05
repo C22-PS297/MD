@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/background_button_green"
             map:backgroundTint="@null"
-            android:textColor="@color/green_text"
+            android:textColor="@color/lighter_green"
             tools:text="Cari Terdekat"
             android:layout_marginTop="100dp"
             android:layout_centerHorizontal="true"/>

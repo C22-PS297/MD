@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.jualbukuid.ui.homepage.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/home_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_camera_activity"
+        android:name="com.example.jualbukuid.ui.CameraActivity"
+        android:label="@string/titleCamera"
+        tools:layout="@layout/activity_camera" />
+
+    <fragment
+        android:id="@+id/navigation_account"
+        android:name="com.example.jualbukuid.ui.account.AccountFragment"
+        android:label="@string/title_account"
+        tools:layout="@layout/account_fragment" />
+</navigation>

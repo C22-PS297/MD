@@ -11,4 +11,43 @@
     <string name="berat_sampah_camera_activity">Berat Sampah</string>
     <string name="upload">Upload</string>
 
+    <string name="password">Masukan password anda</string>
+    <string name="email">Masukan email anda</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">JualBukuID</string>
+    <string name="title_camera">Camera</string>
+    <string name="title_account">Account</string>
+    <string name="logo" />
+    <string name="login">Login</string>
+    <string name="register_success">Registrasi Berhasil</string>
+    <string name="register_fail">Registrasi Gagal</string>
+    <string name="register_question" />
+    <string name="register" />
+    <string name="tv_tittle_email">Email</string>
+    <string name="tv_tittle_password">Password</string>
+    <string name="password_warning">Masukan minimal 6 karakter</string>
+    <string name="email_warning">Format email salah</string>
+    <string name="warning">Masih ada kolom yang kosong</string>
+    <string name="login_success">Berhasil masuk ke akun</string>
+    <string name="login_fail">Gagal masuk ke akun</string>
+    <string name="tv_register_question">Belum memiliki akun?</string>
+    <string name="register_link">Register</string>
+    <string name="nama_pengguna">Nama Pengguna</string>
+    <string name="tv_email_account">Email</string>
+    <string name="tv_riwayat">Riwayat</string>
+    <string name="masukan_nama_anda">Masukan Nama Anda</string>
+    <string name="tv_register">Registrasi Akun</string>
+    <string name="masukan_no_hp_anda">Masukan No.Hp Anda</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
