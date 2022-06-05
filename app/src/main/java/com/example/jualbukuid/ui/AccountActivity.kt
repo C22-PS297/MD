@@ -14,12 +14,4 @@ class AccountActivity : AppCompatActivity() {
         setContentView(R.layout.activity_account)
     }
 
-    override fun bindServiceAsUser(
-        service: Intent,
-        conn: ServiceConnection,
-        flags: Int,
-        user: UserHandle
-    ): Boolean {
-        return super.bindServiceAsUser(service, conn, flags, user)
-    }
 }
