@@ -1,8 +1,11 @@
 package com.example.jualbukuid.ui
 
+import android.content.Intent
+import android.content.ServiceConnection
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.os.UserHandle
 import com.example.jualbukuid.R
 
 class AccountActivity : AppCompatActivity() {
@@ -11,10 +14,12 @@ class AccountActivity : AppCompatActivity() {
         setContentView(R.layout.activity_account)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun bindServiceAsUser(
+        service: Intent,
+        conn: ServiceConnection,
+        flags: Int,
+        user: UserHandle
+    ): Boolean {
+        return super.bindServiceAsUser(service, conn, flags, user)
     }
-
-
-
 }
