@@ -7,7 +7,7 @@ import retrofit2.http.*
 
 interface Api {
     @FormUrlEncoded
-    @POST("register")
+    @POST("user")
     fun createAccount(
         @Field("name") name: String,
         @Field("email") email: String,
