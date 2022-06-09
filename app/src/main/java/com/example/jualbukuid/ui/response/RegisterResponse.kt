@@ -1,10 +1,11 @@
 package com.example.jualbukuid.ui.response
 
+
 import com.google.gson.annotations.SerializedName
 
-data class RegisterResponse(
-    @field:SerializedName("error")
-    val error: Boolean,
-    @field:SerializedName("message")
-    val message: String
+data class RegisterResponse2(
+    @SerializedName("message")
+    val message: String,
+    @SerializedName("status")
+    val status: String
 )
