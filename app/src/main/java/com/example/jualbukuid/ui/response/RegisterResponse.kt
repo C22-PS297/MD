@@ -1,4 +1,4 @@
-package com.storyapp.response
+package com.example.jualbukuid.ui.response
 
 import com.google.gson.annotations.SerializedName
 

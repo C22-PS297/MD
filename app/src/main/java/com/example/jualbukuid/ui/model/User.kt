@@ -1,4 +1,4 @@
-package com.storyapp.model
+package com.example.jualbukuid.ui.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

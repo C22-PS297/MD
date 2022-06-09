@@ -2,21 +2,22 @@ package com.example.jualbukuid.ui
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.example.jualbukuid.R
 import com.example.jualbukuid.databinding.ActivityLoginBinding
+import com.example.jualbukuid.ui.api.ApiConfig
+import com.example.jualbukuid.ui.model.User
 import com.example.jualbukuid.ui.response.LoginResponse
-import com.storyapp.api.ApiConfig
-import com.storyapp.model.User
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 
@@ -35,12 +36,11 @@ class LoginActivity : AppCompatActivity() {
         setup()
 
 
-
         activityLoginBinding.btnLogin.setOnClickListener {
-            val inputEmail = activityLoginBinding.etEmail.text.toString()
-            val inputPassword = activityLoginBinding.etPassword.text.toString()
+            val input_email = activityLoginBinding.etEmail.text.toString()
+            val input_password = activityLoginBinding.etPassword.text.toString()
 
-            login(inputEmail, inputPassword)
+            login(input_email, input_password)
         }
         activityLoginBinding.tvRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
@@ -66,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
         showLoading(true)
 
         val client = ApiConfig.getApiService().login(inputEmail, inputPassword)
-        client.enqueue(object : retrofit2.Callback<LoginResponse> {
+        client.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 showLoading(false)
                 val responseBody = response.body()
@@ -115,3 +115,4 @@ class LoginActivity : AppCompatActivity() {
         private const val TAG = "Login Activity"
     }
 }
+

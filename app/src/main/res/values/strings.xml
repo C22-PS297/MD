@@ -37,4 +37,7 @@
     <string name="masukan_nama_anda">Masukan Nama Anda</string>
     <string name="tv_register">Registrasi Akun</string>
     <string name="masukan_no_hp_anda">Masukan No.Hp Anda</string>
+    <string name="log_out">Log Out</string>
+    <string name="camera_nav_title">Camera</string>
+    <string name="account_nav_title">Account</string>
 </resources>

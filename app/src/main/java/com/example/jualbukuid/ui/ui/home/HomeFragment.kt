@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.jualbukuid.databinding.FragmentHomeBinding
+import com.example.jualbukuid.ui.SharedViewModel
 
 class HomeFragment : Fragment() {
 
@@ -28,13 +29,12 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
+        val textView: TextView = binding.tvNamaPengguna
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

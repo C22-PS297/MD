@@ -1,8 +1,7 @@
-package com.example.jualbukuid
-
+package com.example.jualbukuid.ui.api
 
 import com.example.jualbukuid.ui.response.LoginResponse
-import com.storyapp.response.RegisterResponse
+import com.example.jualbukuid.ui.response.RegisterResponse
 import retrofit2.Call
 import retrofit2.http.*
 

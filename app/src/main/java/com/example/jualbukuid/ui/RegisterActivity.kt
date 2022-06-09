@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.jualbukuid.R
 import com.example.jualbukuid.databinding.ActivityRegisterBinding
-import com.storyapp.api.ApiConfig
-import com.storyapp.response.RegisterResponse
+import com.example.jualbukuid.ui.api.ApiConfig
+import com.example.jualbukuid.ui.response.RegisterResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,13 +28,14 @@ class RegisterActivity : AppCompatActivity() {
         activityRegisterBinding.etPasswordRegister.type = "password"
 
         activityRegisterBinding.btnRegister.setOnClickListener {
-            val inputName = activityRegisterBinding.etNameRegister.text.toString()
-            val inputEmail = activityRegisterBinding.etEmailRegister.text.toString()
-            val inputPassword = activityRegisterBinding.etPasswordRegister.text.toString()
+            val input_name = activityRegisterBinding.etNameRegister.text.toString()
+            val input_email = activityRegisterBinding.etEmailRegister.text.toString()
+            val input_password = activityRegisterBinding.etPasswordRegister.text.toString()
 
-            createAccount(inputName, inputEmail, inputPassword)
+            createAccount(input_name, input_email, input_password)
         }
     }
+
 
     private fun createAccount(input_name: String, input_email: String, input_password: String) {
         showLoading(true)
@@ -49,7 +50,7 @@ class RegisterActivity : AppCompatActivity() {
                 showLoading(false)
                 val responseBody = response.body()
                 Log.d(TAG, "onResponse: $responseBody")
-                if (response.isSuccessful && responseBody?.message == "Akun berhasil dibuat") {
+                if (response.isSuccessful && responseBody?.message == "User created") {
                     Toast.makeText(
                         this@RegisterActivity,
                         getString(R.string.register_success),
@@ -91,5 +92,4 @@ class RegisterActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "Register Activity"
     }
-
 }

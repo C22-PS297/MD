@@ -24,12 +24,12 @@ class AccountFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val notificationsViewModel =
-            ViewModelProvider(this).get(AccountViewModel::class.java)
+            ViewModelProvider(this)[AccountViewModel::class.java]
 
         _binding = FragmentAccountBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.
+        val textView: TextView = binding.tvRiwayat
         notificationsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
@@ -40,6 +40,4 @@ class AccountFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title_login"
-        tools:src="@drawable/ic_baseline_rectangle_24" />
+        tools:src="@drawable/logo_jualbukuid_hijau" />
 
     <TextView
         android:id="@+id/tv_title_login"
@@ -100,14 +100,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="@string/login"
-        android:textSize="16sp"
-        android:textColor="@color/white"
+        android:background="@drawable/button_shape"
         android:backgroundTint="@color/green"
+        android:text="@string/login"
+        android:textColor="@color/lighter_green"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password"
-        android:background="@drawable/button_shape"/>
+        app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
     <TextView
         android:id="@+id/tv_account_question"
@@ -126,7 +126,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/button_shape_google"
         android:text="Login with Google"
-        android:textColorLink="#000000"
+        android:textColorLink="@color/lighter_green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_account_question"
@@ -147,8 +147,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:textColor="@color/green"
         android:text="@string/register_link"
+        android:textColor="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.018"
         app:layout_constraintStart_toEndOf="@+id/tv_register_question"

@@ -11,17 +11,20 @@
         android:layout_height="wrap_content"
         android:background="@drawable/custom_input"
         android:padding="20dp"
-        tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="91dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.117"
+        tools:layout_editor_absoluteX="0dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20dp"
             android:layout_gravity="start"
+            android:padding="20dp"
             tools:src="@tools:sample/avatars" />
 
         <TextView
+            android:id="@+id/tv_nama_pengguna"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
             android:layout_gravity="center"

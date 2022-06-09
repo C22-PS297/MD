@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.jualbukuid.R
 import com.example.jualbukuid.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_home, R.id.navigation_camera, R.id.navigation_account
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

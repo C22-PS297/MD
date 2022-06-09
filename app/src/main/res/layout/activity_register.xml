@@ -42,6 +42,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/custom_input"
+        android:textColor="@color/black"
         android:hint="@string/masukan_nama_anda"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,17 +50,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title_register" />
 
-    <com.example.jualbukuid.CustomEditText
-        android:id="@+id/et_hp_register"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_input"
-        android:hint="@string/masukan_no_hp_anda"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_name_register" />
 
     <com.example.jualbukuid.CustomEditText
         android:id="@+id/et_email_register"
@@ -67,11 +57,12 @@
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/custom_input"
+        android:textColor="@color/black"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_hp_register" />
+        app:layout_constraintTop_toBottomOf="@+id/et_name_register" />
 
     <com.example.jualbukuid.CustomEditText
         android:id="@+id/et_password_register"
@@ -79,6 +70,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/custom_input"
+        android:textColor="@color/black"
         android:hint="@string/password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,6 +85,7 @@
         android:layout_marginTop="100dp"
         android:background="@drawable/button_shape"
         android:text="@string/tv_register"
+        android:textColor="@color/lighter_green"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
