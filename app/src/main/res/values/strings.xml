@@ -47,7 +47,8 @@
     <string name="masukan_nama_anda">Masukan Nama Anda</string>
     <string name="tv_register">Registrasi Akun</string>
     <string name="masukan_no_hp_anda">Masukan No.Hp Anda</string>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="log_out">Logout</string>
 
 </resources>

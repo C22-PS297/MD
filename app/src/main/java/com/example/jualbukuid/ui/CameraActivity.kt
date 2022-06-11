@@ -1,20 +1,27 @@
 package com.example.jualbukuid.ui
 
 import android.Manifest
+import android.R.attr
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.jualbukuid.R
 import com.example.jualbukuid.camera.CameraXActivity
 import com.example.jualbukuid.camera.rotateBitmap
 import com.example.jualbukuid.databinding.ActivityCameraBinding
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask
+import java.io.ByteArrayOutputStream
 import java.io.File
+import java.util.*
+
 
 class CameraActivity : AppCompatActivity() {
 
@@ -27,6 +34,10 @@ class CameraActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCameraBinding
     private var file: File? = null
+    private lateinit var result: Bitmap
+    private lateinit var trashName: String
+    private lateinit var trashWeight: String
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -64,7 +75,27 @@ class CameraActivity : AppCompatActivity() {
         }
 
         binding.btnTakePhoto.setOnClickListener { startCameraX() }
-//        binding.btnUpload.setOnClickListener { uploadData() }
+        binding.btnUpload.setOnClickListener {
+            trashName = binding.etNamaSampah.text.toString()
+            trashWeight = binding.etBeratSampah.text.toString()
+
+            when {
+                trashName.isEmpty() -> {
+                    binding.etNamaSampah.error = "Harus Diisi"
+                    binding.etNamaSampah.requestFocus()
+                    return@setOnClickListener
+                }
+                trashWeight.isEmpty() -> {
+                    binding.etBeratSampah.error = "Harus Diisi"
+                    binding.etBeratSampah.requestFocus()
+                    return@setOnClickListener
+                }
+                else -> uploadData()
+            }
+        }
+
+
+
     }
 
     private val launchCameraX = registerForActivityResult(
@@ -88,7 +119,41 @@ class CameraActivity : AppCompatActivity() {
         launchCameraX.launch(Intent(this, CameraXActivity::class.java))
     }
 
-//    fun uploadData(){
-//
-//    }
+    private fun uploadData(){
+        if (file != null){
+
+            val storageReference = FirebaseStorage.getInstance().getReference("Trash")
+            val trashRef = storageReference.child("trash.jpg")
+
+            val bitmap = (binding.imResultPhoto.drawable as BitmapDrawable).bitmap
+            val baos = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+            val data = baos.toByteArray()
+
+            var uploadTask = trashRef.putBytes(data)
+            uploadTask.addOnSuccessListener{
+                startActivity(Intent(this, ResultActivity::class.java))
+            }.addOnFailureListener{
+                //TODO
+            }
+
+            val urlTask = uploadTask.continueWithTask { task ->
+                if (!task.isSuccessful) {
+                    task.exception?.let {
+                        throw it
+                    }
+                }
+                trashRef.downloadUrl
+            }.addOnCompleteListener{ task ->
+                if (task.isSuccessful) {
+                    val downloadUri = task.result
+                    Toast.makeText(this,"$downloadUri", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Handle failures
+                    // ...
+                }
+            }
+
+        }
+    }
 }

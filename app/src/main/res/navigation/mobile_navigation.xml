@@ -12,10 +12,10 @@
         tools:layout="@layout/home_fragment" />
 
     <fragment
-        android:id="@+id/navigation_camera_activity"
-        android:name="com.example.jualbukuid.ui.CameraActivity"
+        android:id="@+id/navigation_camera"
+        android:name="com.example.jualbukuid.ui.camera.CameraFragment"
         android:label="@string/titleCamera"
-        tools:layout="@layout/activity_camera" />
+        tools:layout="@layout/camera_fragment" />
 
     <fragment
         android:id="@+id/navigation_account"
