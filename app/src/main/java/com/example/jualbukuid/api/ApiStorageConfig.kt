@@ -6,21 +6,20 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
-class ApiConfig {
+class ApiStorageConfig {
     companion object {
-        fun getApiService(): Api {
+        fun getApiService(): ApiStorage {
             val loggingInterceptor =
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
                 .build()
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://capston-jualbuku.as.r.appspot.com")
-                .addConverterFactory(ScalarsConverterFactory.create())
+                .baseUrl("http://104.198.76.3:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
-            return retrofit.create(Api::class.java)
+            return retrofit.create(ApiStorage::class.java)
         }
     }
 }

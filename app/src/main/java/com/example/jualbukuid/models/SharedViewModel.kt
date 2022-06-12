@@ -1,26 +1,22 @@
 package com.example.jualbukuid.models
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
+import android.net.Uri
+import androidx.lifecycle.*
 import com.example.jualbukuid.models.User
 import kotlinx.coroutines.launch
+import java.io.File
+import java.net.URI
 
-class SharedViewModel(private val pref: UserPreference) : ViewModel() {
-    fun getUser(): LiveData<User> {
-        return pref.getUser().asLiveData()
+class SharedViewModel: ViewModel() {
+    val _myFile = MutableLiveData<String>()
+    var myFile = _myFile
+
+
+    fun setFile(myFile: String){
+        _myFile.value = myFile
     }
 
-    fun saveUser(user: User) {
-        viewModelScope.launch {
-            pref.saveUser(user)
-        }
-    }
-
-    fun logout() {
-        viewModelScope.launch {
-            pref.logout()
-        }
+    fun getFile(): LiveData<String>{
+        return myFile
     }
 }
