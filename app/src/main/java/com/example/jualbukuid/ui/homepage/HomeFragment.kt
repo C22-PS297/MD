@@ -44,28 +44,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        sViewModel = ViewModelProvider(
-//            this, ViewModelFactory(UserPreference.getInstance(data), requireActivity())
-//        )[SharedViewModel::class.java]
-//        sViewModel.getUser().observe(viewLifecycleOwner){
-//            if (it != null){
-//                Log.d("Nama User", user.name)
-//                Log.d("Phone User", user.phone)
-//            }
-//        }
-//        viewModel = HomeViewModel()
-//        Log.d("Nama User", user.name)
-//        Log.d("Phone User", user.phone)
-//        viewModel.getDetailUser().observe(viewLifecycleOwner){
-//            if(it!=null){
-//                binding.apply {
-//                    Log.d("Cek Nama", it.name)
-//                    Log.d("Cek Phone", it.phone)
-//                    tvNamaPengguna.text = it.name
-//                    tvHpPengguna.text = it.phone
-//                }
-//            }
-//        }
     }
 
     override fun onDestroyView() {
