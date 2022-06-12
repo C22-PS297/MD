@@ -12,13 +12,11 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.example.jualbukuid.MainActivity
-import com.example.jualbukuid.R
-import com.example.jualbukuid.databinding.ActivityLoginBinding
-import com.example.jualbukuid.response.LoginResponse
 import com.example.jualbukuid.api.ApiConfig
+import com.example.jualbukuid.databinding.ActivityLoginBinding
 import com.example.jualbukuid.models.*
+import com.example.jualbukuid.response.LoginResponse
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
 
 
@@ -27,10 +25,15 @@ private val Context.data: DataStore<Preferences> by preferencesDataStore(name = 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
+    private lateinit var loginResponse: LoginResponse
     private lateinit var preference: UserPreference
+    private lateinit var sharedUserPreferences: SharedUserPreferences
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var input_email: String
-    private lateinit var input_pass: String
+    private lateinit var user: User
+    private lateinit var email: String
+    private lateinit var pass: String
+    private lateinit var name: String
+    private lateinit var phone: String
     private lateinit var errormsg: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,38 +56,52 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel = ViewModelProvider(
             this, ViewModelFactory(UserPreference.getInstance(data), this)
         )[LoginViewModel::class.java]
-
-        loginViewModel.getLogin().observe(this) { user ->
-
+        loginViewModel.getUser().observe(this){ user ->
+            if (user.isLogin){
+                val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
         }
     }
 
 
     private fun login(){
-        loginViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(LoginViewModel::class.java)
+
         binding.apply {
-            input_email = binding.etEmail.text.toString()
-            input_pass = binding.etPassword.text.toString()
+            email = binding.etEmail.text.toString()
+            pass = binding.etPassword.text.toString()
         }
 
-        loginViewModel.setLogin(input_email, input_pass)
+        loginViewModel.setLogin(email, pass)
+        loginViewModel.setData(email, pass)
+
+        loginViewModel.getData().observe(this){
+            if (it != null){
+                name = it.name.toString()
+                email = it.email.toString()
+                phone = it.phone.toString()
+            }
+//            sharedUserPreferences.saveName(name)
+//            sharedUserPreferences.saveEmail(email)
+//            sharedUserPreferences.savePhone(phone)
+        }
 
         loginViewModel.getLogin().observe(this){
             if (it != null){
-                errormsg = it.error.toString()
+                errormsg = it.status.toString()
                 Log.d("Error Message", errormsg)
             }
             if (errormsg == "true"){
-                showLoading(true)
-                Toast.makeText(this,"Berhasil Login", Toast.LENGTH_SHORT).show()
-                showLoading(false)
-
+                Toast.makeText(this, "Anda Berhasil Login", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
             } else {
-                Toast.makeText(this, "Gagal Login", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
+
+
 
 //    private fun setup() {
 //        loginViewModel = ViewModelProvider(
