@@ -10,7 +10,7 @@ class ViewModelFactory(private val pref: UserPreference, private val context: Co
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(SharedViewModel::class.java) -> {
-                SharedViewModel(pref) as T
+                SharedViewModel() as T
             }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(pref) as T

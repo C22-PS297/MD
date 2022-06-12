@@ -27,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var loginResponse: LoginResponse
     private lateinit var preference: UserPreference
-    private lateinit var sharedUserPreferences: SharedUserPreferences
+//    private lateinit var sharedUserPreferences: SharedUserPreferences
     private lateinit var binding: ActivityLoginBinding
     private lateinit var user: User
     private lateinit var email: String
