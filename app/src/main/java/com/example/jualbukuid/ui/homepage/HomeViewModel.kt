@@ -9,8 +9,4 @@ import com.example.jualbukuid.response.LoginResponse
 
 class HomeViewModel : ViewModel() {
 
-    val user = MutableLiveData<LoginResponse>()
-    val dataUser = MutableLiveData<Data>()
-
-
 }
