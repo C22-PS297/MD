@@ -7,19 +7,27 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface Api {
-    @FormUrlEncoded
-    @POST("register")
-    fun createAccount(
-        @Field("name") name: String,
-        @Field("email") email: String,
-        @Field("password") password: String
-    ): Call<RegisterResponse>
+    @Headers("Content-Type: application/json")
+    @POST("/user")
+    fun getStringScalar(@Body body: RegisterResponse): Call<RegisterResponse>
 
-    @FormUrlEncoded
-    @POST("login")
-    fun login(
-        @Field("email") email: String,
-        @Field("password") password: String
-    ): Call<LoginResponse>
+    @Headers("Content-Type: application/json")
+    @POST("/user/login")
+    fun postLogin(@Body body: LoginResponse): Call<LoginResponse>
+
+//    @FormUrlEncoded
+//    @POST("user/login")
+//    fun login(
+//        @Field("email") email: String,
+//        @Field("password") password: String
+//    ): Call<LoginResponse>
+//
+//    @FormUrlEncoded
+//    @POST("user/register")
+//    fun createAccount(
+//        @Field("name") name: String,
+//        @Field("email") email: String,
+//        @Field("password") password: String
+//    ): Call<RegisterResponse>
 
 }

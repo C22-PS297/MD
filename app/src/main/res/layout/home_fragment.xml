@@ -6,17 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".ui.homepage.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:background="@drawable/custom_input"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.117"
+        tools:layout_editor_absoluteX="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/im_user_photo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="start"
+                android:padding="20dp"
+                android:src="@drawable/acc_photo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_nama_pengguna"/>
+
+            <TextView
+                android:id="@+id/tv_nama_pengguna"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/nama_pengguna"
+                android:layout_marginStart="16dp"
+                android:textSize="20sp"
+                app:layout_constraintTop_toTopOf="@id/im_user_photo"
+                app:layout_constraintStart_toEndOf="@id/im_user_photo"
+                app:layout_constraintBottom_toTopOf="@id/tv_hp_pengguna"/>
+
+            <TextView
+                android:id="@+id/tv_hp_pengguna"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/hp_pengguna"
+                android:textSize="20sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_nama_pengguna"
+                app:layout_constraintStart_toStartOf="@id/tv_nama_pengguna"
+                app:layout_constraintBottom_toBottomOf="@id/im_user_photo"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

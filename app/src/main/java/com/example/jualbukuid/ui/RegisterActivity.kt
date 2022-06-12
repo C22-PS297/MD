@@ -6,90 +6,69 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.jualbukuid.R
+import androidx.lifecycle.ViewModelProvider
 import com.example.jualbukuid.databinding.ActivityRegisterBinding
-import com.example.jualbukuid.api.ApiConfig
-import com.example.jualbukuid.response.RegisterResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.jualbukuid.models.RegisterViewModel
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var activityRegisterBinding: ActivityRegisterBinding
+    private lateinit var viewModel: RegisterViewModel
+    private lateinit var binding: ActivityRegisterBinding
+    private lateinit var name: String
+    private lateinit var phone: String
+    private lateinit var email: String
+    private lateinit var pass: String
+    private lateinit var errormsg: String
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activityRegisterBinding = ActivityRegisterBinding.inflate(layoutInflater)
-        setContentView(activityRegisterBinding.root)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        activityRegisterBinding.etNameRegister.type = "name"
-        activityRegisterBinding.etEmailRegister.type = "email"
-        activityRegisterBinding.etPasswordRegister.type = "password"
-
-        activityRegisterBinding.btnRegister.setOnClickListener {
-            val inputName = activityRegisterBinding.etNameRegister.text.toString()
-            val inputEmail = activityRegisterBinding.etEmailRegister.text.toString()
-            val inputPassword = activityRegisterBinding.etPasswordRegister.text.toString()
-
-            createAccount(inputName, inputEmail, inputPassword)
+        binding.btnRegister.setOnClickListener {
+            getData()
         }
+
     }
 
-    private fun createAccount(input_name: String, input_email: String, input_password: String) {
-        showLoading(true)
+    private fun getData(){
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[RegisterViewModel::class.java]
 
-        val client =
-            ApiConfig.getApiService().createAccount(input_name, input_email, input_password)
-        client.enqueue(object : Callback<RegisterResponse> {
-            override fun onResponse(
-                call: Call<RegisterResponse>,
-                response: Response<RegisterResponse>
-            ) {
-                showLoading(false)
-                val responseBody = response.body()
-                Log.d(TAG, "onResponse: $responseBody")
-                if (response.isSuccessful && responseBody?.message == "Akun berhasil dibuat") {
-                    Toast.makeText(
-                        this@RegisterActivity,
-                        getString(R.string.register_success),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-                    startActivity(intent)
-                } else {
-                    Log.e(TAG, "onFailure1: ${response.message()}")
-                    Toast.makeText(
-                        this@RegisterActivity,
-                        getString(R.string.register_fail),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+        binding.apply {
+            name = binding.etNameRegister.text.toString()
+            phone = binding.etHpRegister.text.toString()
+            email = binding.etEmailRegister.text.toString()
+            pass = binding.etPasswordRegister.text.toString()
+        }
+
+        viewModel.setRegis(name, phone, email, pass)
+
+        viewModel.getRegis().observe(this) {
+            if (it != null) {
+                errormsg = it.error.toString()
+                Log.d("Error Message", errormsg)
             }
-
-            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+            if (errormsg == "false"){
+                showLoading(true)
+                Toast.makeText(this, "Berhasil Daftar", Toast.LENGTH_SHORT).show()
                 showLoading(false)
-                Log.e(TAG, "onFailure2: ${t.message}")
-                Toast.makeText(
-                    this@RegisterActivity,
-                    getString(R.string.register_fail),
-                    Toast.LENGTH_SHORT
-                ).show()
+                startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+            } else {
+                Toast.makeText(this, "Gagal Daftar", Toast.LENGTH_SHORT).show()
             }
-
-        })
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
-            activityRegisterBinding.progressBar.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.VISIBLE
         } else {
-            activityRegisterBinding.progressBar.visibility = View.GONE
+            binding.progressBar.visibility = View.GONE
         }
     }
 
     companion object {
         private const val TAG = "Register Activity"
     }
-
 }

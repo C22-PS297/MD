@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.camera.CameraFragment">
+
+    <TextView
+        android:id="@+id/tv_title_camera_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ketentuan"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_contoh_foto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contoh Foto"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="30dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_camera_fragment"
+        app:layout_constraintBottom_toTopOf="@id/im_contoh_buku"/>
+
+    <ImageView
+        android:id="@+id/im_contoh_buku"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/contoh_buku"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_contoh_foto"
+        app:layout_constraintTop_toBottomOf="@+id/tv_contoh_foto"/>
+
+    <ImageView
+        android:id="@+id/im_contoh_kertas"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/contoh_kertas"
+        android:layout_marginStart="40dp"
+        app:layout_constraintStart_toEndOf="@+id/im_contoh_buku"
+        app:layout_constraintTop_toTopOf="@+id/im_contoh_buku" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_marginBottom="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="Harap mengambil foto dalam keadaan cukup cahaya dan tidak buram"
+        app:layout_constraintTop_toBottomOf="@id/im_contoh_buku"
+        app:layout_constraintStart_toStartOf="@id/im_contoh_buku"
+        app:layout_constraintEnd_toEndOf="@id/im_contoh_kertas"
+        app:layout_constraintBottom_toTopOf="@id/btn_goto_camera"/>
+
+    <Button
+        android:id="@+id/btn_goto_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jual Sampah"
+        android:background="@drawable/background_button_green"
+        android:textColor="@color/lighter_green"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_description" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

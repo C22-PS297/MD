@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "760566116932",
+    "project_id": "capstone-jualbuku",
+    "storage_bucket": "capstone-jualbuku.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760566116932:android:842f59ee019e909f7e4211",
+        "android_client_info": {
+          "package_name": "com.example.jualbukuid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760566116932-v6pbilujh1cgoa4sn44r4a5jobvaorn7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-kn3k3JATQdzLFM6JJRNFfjsXPZI_yAo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760566116932-v6pbilujh1cgoa4sn44r4a5jobvaorn7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
