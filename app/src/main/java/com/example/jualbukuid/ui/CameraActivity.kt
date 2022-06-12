@@ -8,14 +8,19 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import com.example.jualbukuid.camera.CameraXActivity
 import com.example.jualbukuid.camera.rotateBitmap
 import com.example.jualbukuid.databinding.ActivityCameraBinding
+import com.example.jualbukuid.models.CameraViewModel
+import com.example.jualbukuid.models.SharedViewModel
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 import java.io.ByteArrayOutputStream
@@ -33,6 +38,8 @@ class CameraActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityCameraBinding
+    private lateinit var viewModel: CameraViewModel
+    private val sharedViewModel: SharedViewModel by viewModels()
     private var file: File? = null
     private lateinit var result: Bitmap
     private lateinit var trashName: String
@@ -65,6 +72,12 @@ class CameraActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        ).get(CameraViewModel::class.java)
 
         if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(
@@ -148,6 +161,10 @@ class CameraActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val downloadUri = task.result
                     Toast.makeText(this,"$downloadUri", Toast.LENGTH_SHORT).show()
+
+                    viewModel.sendPhoto("$downloadUri")
+                    sharedViewModel.setFile("$downloadUri")
+
                 } else {
                     // Handle failures
                     // ...
