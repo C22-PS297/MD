@@ -37,7 +37,7 @@
             android:value="AIzaSyCR-lrCtFzpzWjXkroISz3AGprTYtkoRxg" />
 
         <activity
-            android:name=".ui.SplashScreenActivity"
+            android:name=".ui.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".ui.ResultActivity"
@@ -53,7 +53,7 @@
             android:name=".ui.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

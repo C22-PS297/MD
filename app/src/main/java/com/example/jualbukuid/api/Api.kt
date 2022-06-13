@@ -15,19 +15,5 @@ interface Api {
     @POST("/user/login")
     fun postLogin(@Body body: LoginResponse): Call<LoginResponse>
 
-//    @FormUrlEncoded
-//    @POST("user/login")
-//    fun login(
-//        @Field("email") email: String,
-//        @Field("password") password: String
-//    ): Call<LoginResponse>
-//
-//    @FormUrlEncoded
-//    @POST("user/register")
-//    fun createAccount(
-//        @Field("name") name: String,
-//        @Field("email") email: String,
-//        @Field("password") password: String
-//    ): Call<RegisterResponse>
 
 }
